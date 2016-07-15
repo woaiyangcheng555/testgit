@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app="mymodule">
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="https://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<style>
+h1{
+	text-align:center;
+}
+</style>
+</head>
+<div ng-controller="myctrl">
+<h1>Hello AngularJS</h1>
+<h1>{{ clock|date:'yyyy-MM-dd/HH:mm:ss'}}!</h1>
+</div>
+<script type="text/javascript">
+	var mymodule=angular.module("mymodule",[]);
+		mymodule.controller("myctrl",function($scope,$timeout){
+		var updateClock = function() {
+			$scope.clock = new Date();
+			$timeout(function() {
+			updateClock();
+		}, 1000);
+		};
+		updateClock();
+		});
+
+</script>
+<body>
+</body>
+</html>
